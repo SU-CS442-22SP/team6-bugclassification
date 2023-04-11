@@ -1,5 +1,5 @@
 import variables as gv
-import base64, requests
+import base64, os, sys
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
@@ -12,6 +12,10 @@ from PyQt5.QtWidgets import (
     QScrollArea,
 )
 
+sys.path.insert(0, os.path.abspath('..'))
+
+from server.chatgpt import ChatGPTService
+from server.infer import InferService
 
 class Client(QMainWindow):
     def __init__(self):
@@ -57,7 +61,6 @@ class Client(QMainWindow):
             self.remove_button.setEnabled(True)
             self.classify_button.setEnabled(True)
             with open(file_path, "r") as f:
-                self._send_to_server(f)
                 self.read_content = f.read()
         else:
             self.read_content = ""
@@ -70,12 +73,20 @@ class Client(QMainWindow):
         self.print_result("")
 
 
-    def _send_to_server(self, f):
-        files = {'file': f}
-        response = requests.post("http://192.168.0.103:8000/infer", files=files)
-        self.output = response.content.decode("utf-8")
-        self.print_result(self.output.replace("\\n", '\n'))
+    def _send_to_server(self):
+        symbols = "".join(["+" for _ in range(5)])
+        gpt_service = ChatGPTService()
+        reply_cgpt = gpt_service.classify(self.read_content)
+        self.print_result(f"{symbols} RESPONSE FROM CHATGPT {symbols}\n\n" + reply_cgpt)
 
 
-    def print_result(self, result):
-        self.output_label.setText(result)
+        infer_service = InferService()
+        reply_infer = infer_service.classify(self.read_content)
+        self.print_result(f"{symbols} RESPONSE FROM INFER {symbols}\n" + reply_infer.content.decode("utf-8").replace("\\n", '\n'), append=True)
+
+
+    def print_result(self, result, append:bool=False):
+        if append:
+            self.output_label.setText('\n\n\n\n'.join([self.output_label.text(), result]))
+        else:
+            self.output_label.setText(result)

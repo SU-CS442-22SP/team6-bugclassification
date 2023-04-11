@@ -1,6 +1,6 @@
 import openai
-from bugclassification_base import BugClassificationBase
-from config import settings
+from server.bugclassification_base import BugClassificationBase
+from server.config import settings
 
 openai.api_key = settings.CHATGPT_KEY
 
