@@ -4,7 +4,7 @@ import requests
 
 
 class InferService(BugClassificationBase):
-    def _init_(self):
+    def __init__(self):
         self.url = settings.INFER_URL
 
     def classify(self, buggged_code):
