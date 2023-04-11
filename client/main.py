@@ -1,7 +1,7 @@
 import socket, sys
 import variables as gv
 from PyQt5.QtWidgets import QApplication
-from .client import Client
+from client import Client
 
 
 def main():

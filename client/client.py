@@ -1,4 +1,5 @@
 import variables as gv
+import base64, requests
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
@@ -56,8 +57,8 @@ class Client(QMainWindow):
             self.remove_button.setEnabled(True)
             self.classify_button.setEnabled(True)
             with open(file_path, "r") as f:
+                self._send_to_server(f)
                 self.read_content = f.read()
-            self.print_result(self.read_content)
         else:
             self.read_content = ""
 
@@ -69,8 +70,11 @@ class Client(QMainWindow):
         self.print_result("")
 
 
-    def _send_to_server(self):
-        pass
+    def _send_to_server(self, f):
+        files = {'file': f}
+        response = requests.post("http://192.168.0.103:8000/infer", files=files)
+        self.output = response.content.decode("utf-8")
+        self.print_result(self.output.replace("\\n", '\n'))
 
 
     def print_result(self, result):
