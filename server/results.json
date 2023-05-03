@@ -1,0 +1,313 @@
+[
+  { "artifact": "DEADLOCK", "gpt": "DEADLOCK", "infer": "DEADLOCK" },
+  {
+    "artifact": "UNREACHABLE_CODE",
+    "gpt": "UNREACHABLE_CODE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "GLOBAL_VARIABLE_INITIALIZED_WITH_FUNCTION_OR_METHOD_CALL",
+    "gpt": "GLOBAL_VARIABLE_INITIALIZED_WITH_FUNCTION_OR_METHOD_CALL",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "BUFFER_OVERRUN_S2",
+    "gpt": "BUFFER_OVERRUN_S2",
+    "infer": "NO_BUG"
+  },
+  { "artifact": "CONFIG_IMPACT", "gpt": "CONFIG_IMPACT", "infer": "NO_BUG" },
+  {
+    "artifact": "EXPENSIVE_LOOP_INVARIANT_CALL",
+    "gpt": "EXPENSIVE_LOOP_INVARIANT_CALL",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "BIABDUCTION_MEMORY_LEAK",
+    "gpt": "BIABDUCTION_MEMORY_LEAK",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CHECKERS_PRINTF_ARGS",
+    "gpt": "CHECKERS_PRINTF_ARGS",
+    "infer": "NO_BUG"
+  },
+  { "artifact": "MEMORY_LEAK", "gpt": "MEMORY_LEAK", "infer": "NO_BUG" },
+  {
+    "artifact": "ERADICATE_FIELD_NOT_NULLABLE",
+    "gpt": "ERADICATE_FIELD_NOT_NULLABLE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CONDITION_ALWAYS_FALSE",
+    "gpt": "CONDITION_ALWAYS_FALSE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "SHELL_INJECTION_RISK",
+    "gpt": "SHELL_INJECTION_RISK",
+    "infer": "RESOURCE_LEAK"
+  },
+  {
+    "artifact": "UNTRUSTED_ENVIRONMENT_CHANGE_RISK",
+    "gpt": "UNTRUSTED_ENVIRONMENT_CHANGE_RISK",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "IVAR_NOT_NULL_CHECKED",
+    "gpt": "IVAR_NOT_NULL_CHECKED",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "INTEGER_OVERFLOW_L2",
+    "gpt": "INTEGER_OVERFLOW_L2",
+    "infer": "INTEGER_OVERFLOW_L2"
+  },
+  {
+    "artifact": "ERADICATE_CONDITION_REDUNDANT",
+    "gpt": "ERADICATE_CONDITION_REDUNDANT",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "GUARDEDBY_VIOLATION",
+    "gpt": "GUARDEDBY_VIOLATION",
+    "infer": "THREAD_SAFETY_VIOLATION"
+  },
+  { "artifact": "INVARIANT_CALL", "gpt": "INVARIANT_CALL", "infer": "NO_BUG" },
+  {
+    "artifact": "INTEGER_OVERFLOW_L5",
+    "gpt": "INTEGER_OVERFLOW_L5",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "STATIC_INITIALIZATION_ORDER_FIASCO",
+    "gpt": "STATIC_INITIALIZATION_ORDER_FIASCO",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "MODIFIES_IMMUTABLE",
+    "gpt": "MODIFIES_IMMUTABLE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "INTEGER_OVERFLOW_U5",
+    "gpt": "INTEGER_OVERFLOW_U5",
+    "infer": "INTEGER_OVERFLOW_U5"
+  },
+  {
+    "artifact": "DANGLING_POINTER_DEREFERENCE",
+    "gpt": "DANGLING_POINTER_DEREFERENCE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "PULSE_UNINITIALIZED_VALUE",
+    "gpt": "PULSE_UNINITIALIZED_VALUE",
+    "infer": "NO_BUG"
+  },
+  { "artifact": "STARVATION", "gpt": "STARVATION", "infer": "STARVATION" },
+  {
+    "artifact": "SQL_INJECTION_RISK",
+    "gpt": "SQL_INJECTION_RISK",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "ERADICATE_INCONSISTENT_SUBCLASS_RETURN_ANNOTATION",
+    "gpt": "ERADICATE_INCONSISTENT_SUBCLASS_RETURN_ANNOTATION",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "LOCK_CONSISTENCY_VIOLATION",
+    "gpt": "LOCK_CONSISTENCY_VIOLATION",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "LOCKLESS_VIOLATION",
+    "gpt": "LOCKLESS_VIOLATION",
+    "infer": "LOCKLESS_VIOLATION"
+  },
+  {
+    "artifact": "BUFFER_OVERRUN_L2",
+    "gpt": "BUFFER_OVERRUN_L2",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "EXECUTION_TIME_COMPLEXITY_INCREASE",
+    "gpt": "EXECUTION_TIME_COMPLEXITY_INCREASE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CHECKERS_ANNOTATION_REACHABILITY_ERROR",
+    "gpt": "CHECKERS_ANNOTATION_REACHABILITY_ERROR",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "BUFFER_OVERRUN_U5",
+    "gpt": "BUFFER_OVERRUN_U5",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "COMPONENT_WITH_MULTIPLE_FACTORY_METHODS",
+    "gpt": "COMPONENT_WITH_MULTIPLE_FACTORY_METHODS",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "BUFFER_OVERRUN_L5",
+    "gpt": "BUFFER_OVERRUN_L5",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CONSTANT_ADDRESS_DEREFERENCE",
+    "gpt": "CONSTANT_ADDRESS_DEREFERENCE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "EXECUTION_TIME_UNREACHABLE_AT_EXIT",
+    "gpt": "EXECUTION_TIME_UNREACHABLE_AT_EXIT",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "INTEGER_OVERFLOW_L1",
+    "gpt": "INTEGER_OVERFLOW_L1",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CHECKERS_ALLOCATES_MEMORY",
+    "gpt": "CHECKERS_ALLOCATES_MEMORY",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "OPTIONAL_EMPTY_ACCESS",
+    "gpt": "OPTIONAL_EMPTY_ACCESS",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "INFERBO_ALLOC_IS_BIG",
+    "gpt": "INFERBO_ALLOC_IS_BIG",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "LAB_RESOURCE_LEAK",
+    "gpt": "LAB_RESOURCE_LEAK",
+    "infer": "RESOURCE_LEAK"
+  },
+  {
+    "artifact": "BUFFER_OVERRUN_L1",
+    "gpt": "BUFFER_OVERRUN_L1",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "ERADICATE_ANNOTATION_GRAPH",
+    "gpt": "ERADICATE_ANNOTATION_GRAPH",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "EMPTY_VECTOR_ACCESS",
+    "gpt": "EMPTY_VECTOR_ACCESS",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CONDITION_ALWAYS_TRUE",
+    "gpt": "CONDITION_ALWAYS_TRUE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CONFIG_CHECKS_BETWEEN_MARKERS",
+    "gpt": "CONFIG_CHECKS_BETWEEN_MARKERS",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "BUFFER_OVERRUN_L4",
+    "gpt": "BUFFER_OVERRUN_L4",
+    "infer": "NO_BUG"
+  },
+  { "artifact": "DEAD_STORE", "gpt": "DEAD_STORE", "infer": "DEAD_STORE" },
+  {
+    "artifact": "ERADICATE_FIELD_NOT_INITIALIZED",
+    "gpt": "ERADICATE_FIELD_NOT_INITIALIZED",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "INFERBO_ALLOC_IS_NEGATIVE",
+    "gpt": "INFERBO_ALLOC_IS_NEGATIVE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "ERADICATE_INCONSISTENT_SUBCLASS_PARAMETER_ANNOTATION",
+    "gpt": "ERADICATE_INCONSISTENT_SUBCLASS_PARAMETER_ANNOTATION",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "INFERBO_ALLOC_IS_ZERO",
+    "gpt": "INFERBO_ALLOC_IS_ZERO",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "BUFFER_OVERRUN_L3",
+    "gpt": "BUFFER_OVERRUN_L3",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "ARBITRARY_CODE_EXECUTION_UNDER_LOCK",
+    "gpt": "ARBITRARY_CODE_EXECUTION_UNDER_LOCK",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CHECKERS_IMMUTABLE_CAST",
+    "gpt": "CHECKERS_IMMUTABLE_CAST",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CHECKERS_EXPENSIVE_OVERRIDES_UNANNOTATED",
+    "gpt": "CHECKERS_EXPENSIVE_OVERRIDES_UNANNOTATED",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "EXPENSIVE_EXECUTION_TIME",
+    "gpt": "EXPENSIVE_EXECUTION_TIME",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "DIVIDE_BY_ZERO",
+    "gpt": "DIVIDE_BY_ZERO",
+    "infer": "DIVIDE_BY_ZERO"
+  },
+  {
+    "artifact": "NULL_DEREFERENCE",
+    "gpt": "NULL_DEREFERENCE",
+    "infer": "NULL_DEREFERENCE"
+  },
+  {
+    "artifact": "UNTRUSTED_DESERIALIZATION_RISK",
+    "gpt": "UNTRUSTED_DESERIALIZATION_RISK",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "VECTOR_INVALIDATION",
+    "gpt": "VECTOR_INVALIDATION",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "CHECKERS_CALLS_EXPENSIVE_METHOD",
+    "gpt": "CHECKERS_CALLS_EXPENSIVE_METHOD",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "INTERFACE_NOT_THREAD_SAFE",
+    "gpt": "INTERFACE_NOT_THREAD_SAFE",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "INFERBO_ALLOC_MAY_BE_BIG",
+    "gpt": "INFERBO_ALLOC_MAY_BE_BIG",
+    "infer": "NO_BUG"
+  },
+  {
+    "artifact": "ASSIGN_POINTER_WARNING",
+    "gpt": "ASSIGN_POINTER_WARNING",
+    "infer": "ASSIGN_POINTER_WARNING"
+  },
+  {
+    "artifact": "NULLPTR_DEREFERENCE",
+    "gpt": "NULLPTR_DEREFERENCE",
+    "infer": "NULLPTR_DEREFERENCE"
+  }
+]

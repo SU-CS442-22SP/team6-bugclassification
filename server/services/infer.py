@@ -1,6 +1,7 @@
 from services.bugclassification_base import BugClassificationBase
 from config import settings
 import requests
+import json
 
 
 class InferService(BugClassificationBase):
@@ -9,5 +10,10 @@ class InferService(BugClassificationBase):
 
     def classify(self, buggged_code):
         files = {"file": buggged_code}
-        response = requests.post(self.url, files=files)
-        return response
+        try:
+            response = requests.post(self.url, files=files)
+            response = json.loads(response.content)
+            return response["bug_type"]
+        except Exception as e:
+            print("Error in InferService: ", e)
+            return "ERROR"
