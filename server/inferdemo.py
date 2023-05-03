@@ -1,4 +1,4 @@
-from infer import InferService
+from services.infer import InferService
 
 infer_service = InferService()
 reply = infer_service.classify(open("bug1.java").read())
