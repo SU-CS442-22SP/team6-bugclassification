@@ -1,5 +1,5 @@
 import openai
-from bugclassification_base import BugClassificationBase
+from services.bugclassification_base import BugClassificationBase
 from config import settings
 
 openai.api_key = settings.CHATGPT_KEY
@@ -23,4 +23,4 @@ class ChatGPTService(BugClassificationBase):
         chat = openai.ChatCompletion.create(
             model="gpt-3.5-turbo", messages=self.messages
         )
-        return chat.choices[0].message.content
+        return chat["choices"][0]["message"]["content"]

@@ -1,5 +1,5 @@
-from server.bugclassification_base import BugClassificationBase
-from server.config import settings
+from services.bugclassification_base import BugClassificationBase
+from config import settings
 import requests
 
 
