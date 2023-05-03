@@ -1,5 +1,10 @@
 from chatgpt import ChatGPTService
+import glob
 
-gpt_service = ChatGPTService()
-reply = gpt_service.classify(open("bug1.java").read())
-print("ChatGPT reply:", reply)
+# Get all tests files
+test_files = glob.glob("./test/*.java")
+
+for artifact in test_files:
+    gpt_service = ChatGPTService()
+    reply = gpt_service.classify(open(artifact).read())
+    print("Artifact: ", artifact, "ChatGPT reply:", reply)
