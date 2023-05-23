@@ -6,7 +6,7 @@ import os
 class InferService(BugClassificationBase):
     def __init__(self):
         super().__init__()
-        self.COMMAND = "infer run -- javac FILE_PATH"
+        self.COMMAND = "infer run --results-dir inferlogs -- javac FILE_PATH"
 
     def classify(self, file_path):
         try:
