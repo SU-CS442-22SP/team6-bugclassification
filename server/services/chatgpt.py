@@ -7,6 +7,7 @@ openai.api_key = settings.CHATGPT_KEY
 
 class ChatGPTService(BugClassificationBase):
     def __init__(self):
+        super().__init__()
         self.messages = self._start_chat()
 
     def _start_chat(self):
@@ -18,7 +19,9 @@ class ChatGPTService(BugClassificationBase):
         ]
         return messages
 
-    def classify(self, buggged_code):
+    def classify(self, file_path):
+        with open(file_path, "r") as f:
+            buggged_code = f.read()
         self.messages.append({"role": "user", "content": buggged_code})
         chat = openai.ChatCompletion.create(
             model="gpt-3.5-turbo", messages=self.messages
