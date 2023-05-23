@@ -1,13 +1,10 @@
+import os
+from datetime import datetime
+from services import PMDService
+from services import InferService
+from services import ChatGPTService
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-import subprocess
-from datetime import datetime
-import os
-from pprint import pprint
-from services.pmd import PMDService
-from services.infer import InferService
-from services.chatgpt import ChatGPTService
-import json
 
 
 app = FastAPI()
@@ -22,6 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 async def save_file(file):
     contents = await file.read()
     current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -31,10 +29,11 @@ async def save_file(file):
     file_path = os.path.dirname(os.path.abspath(__file__)) + "/files/" + filename
     return file_path
 
+
 @app.post("/analyze")
 async def analyze(file: UploadFile = File(...)):
     file_path = await save_file(file)
-    pmd_service = PMDService("config.xml")
+    pmd_service = PMDService("pmd_config.xml")
     infer_service = InferService()
     chatgpt_service = ChatGPTService()
     pmd_response = pmd_service.classify(file_path)
