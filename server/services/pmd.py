@@ -24,7 +24,7 @@ class PMDService(BugClassificationBase):
     def run_command(self, command):
         try:
             # Set the new PATH value
-            new_path = os.environ.get("PATH", "") + ":/home/yasin/Downloads/pmd-bin-7.0.0-rc2/bin"
+            new_path = os.environ.get("PATH", "") + ":" + settings.PMD_PATH
             os.environ["PATH"] = new_path
             output = subprocess.check_output(command, shell=True, executable="/bin/bash", env=os.environ)
             return output

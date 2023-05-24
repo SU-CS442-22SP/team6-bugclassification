@@ -1,27 +1,42 @@
 import pytest
-import requests
-import json
-from services.infer import InferService
+from unittest.mock import MagicMock, patch
+from services import InferService
+import subprocess
+import os
 
 
-@pytest.fixture()
-def mock_response(monkeypatch):
-    def mock_post(*args, **kwargs):
-        class MockResponse:
-            def __init__(self, status_code, content):
-                self.status_code = status_code
-                self.content = content
-
-            def json(self):
-                return json.loads(self.content)
-
-        return MockResponse(200, '{"bug_type": "syntax error"}')
-
-    monkeypatch.setattr(requests, "post", mock_post)
+@pytest.fixture
+def infer_service():
+    return InferService()
 
 
-def test_infer_service_classify(mock_response):
-    infer_service = InferService()
-    bugged_code = 'def foo():\n    print("Hello, World!"\n'
-    bug_type = infer_service.classify(bugged_code)
-    assert bug_type == "syntax error"
+def test_classify_success(infer_service):
+    file_path = "test_file.java"
+    expected_response = b"Infer classification result"
+
+    # Mocking subprocess.check_output method
+    with patch("subprocess.check_output") as mock_check_output:
+        mock_check_output.return_value = expected_response
+
+        result = infer_service.classify(file_path)
+
+ 
+
+
+def test_classify_exception(infer_service):
+    file_path = "test_file.java"
+    expected_response = "ERROR"
+
+    # Mocking subprocess.check_output method to raise an exception
+    with patch("subprocess.check_output") as mock_check_output:
+        mock_check_output.side_effect = subprocess.CalledProcessError(1, "infer", "ERROR")
+
+        result = infer_service.classify(file_path)
+
+    assert result == expected_response
+    mock_check_output.assert_called_once_with(
+        infer_service.COMMAND.replace("FILE_PATH", file_path),
+        shell=True,
+        executable="/bin/bash",
+        env=os.environ
+    )
