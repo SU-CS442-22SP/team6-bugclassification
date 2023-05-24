@@ -1,17 +1,21 @@
 from services.bugclassification_base import BugClassificationBase
+from config import settings
 import subprocess
+import json
 import os
 
 
-class InferService(BugClassificationBase):
-    def __init__(self):
+class PMDService(BugClassificationBase):
+    def __init__(self, pmd_config_path):
         super().__init__()
-        self.COMMAND = "infer run --results-dir inferlogs -- javac FILE_PATH"
+        self.COMMAND = f"pmd check -f json -R {pmd_config_path} -d FILE_PATH"
+        self.ENV_COMMAND = f"export PATH=$PATH:{settings.PMD_PATH}"
 
     def classify(self, file_path):
         try:
             command = self.COMMAND.replace("FILE_PATH", file_path)
             response = self.run_command(command)
+            response = json.loads(response)
             return response
         except Exception as e:
             print("Error in PMDService: ", e)
@@ -19,6 +23,9 @@ class InferService(BugClassificationBase):
 
     def run_command(self, command):
         try:
+            # Set the new PATH value
+            new_path = os.environ.get("PATH", "") + ":/home/yasin/Downloads/pmd-bin-7.0.0-rc2/bin"
+            os.environ["PATH"] = new_path
             output = subprocess.check_output(command, shell=True, executable="/bin/bash", env=os.environ)
             return output
         except subprocess.CalledProcessError as e:
