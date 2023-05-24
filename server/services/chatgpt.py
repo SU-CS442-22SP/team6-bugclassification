@@ -14,7 +14,7 @@ class ChatGPTService(BugClassificationBase):
         messages = [
             {
                 "role": "system",
-                "content": settings.CHATGPT_START_MESSAGE + "\n" + settings.BUGS_LIST,
+                "content": settings.CHATGPT_START_MESSAGE,
             }
         ]
         return messages
@@ -22,8 +22,11 @@ class ChatGPTService(BugClassificationBase):
     def classify(self, file_path):
         with open(file_path, "r") as f:
             buggged_code = f.read()
-        self.messages.append({"role": "user", "content": buggged_code})
-        chat = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", messages=self.messages
-        )
-        return chat["choices"][0]["message"]["content"]
+        try:
+            self.messages.append({"role": "user", "content": buggged_code})
+            chat = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo", messages=self.messages
+            )
+            return chat["choices"][0]["message"]["content"]
+        except Exception as e:
+            return "ERROR"

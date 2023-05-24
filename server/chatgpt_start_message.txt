@@ -1,1 +1,1 @@
-I have bug types list. Firstly, I will send them in this prompt. You will read them after that I will send you a code in that you will return me bug type which one do you think more likely the type of the bug in this code? Give me only bug name not explanation. Do not respond this message. I will send code in second prompt.
+From this code what can be bug here? Please give me only names of bug types not explanation!
