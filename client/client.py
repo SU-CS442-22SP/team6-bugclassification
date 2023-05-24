@@ -1,5 +1,5 @@
 import variables as gv
-import base64, os, sys
+import base64, os, sys, requests
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
@@ -11,11 +11,21 @@ from PyQt5.QtWidgets import (
     QFileDialog,
     QScrollArea,
 )
+from models.chatgpt_response import ChatGPTResponse
+from models.infer_response import InferResponse
+from models.pmd_response import PMDResponse
+
+
+import json
+
+def prettify_json(json_str):
+    try:
+        parsed = json.loads(json_str)
+        return json.dumps(parsed, indent=4).replace("\\n", "\n")
+    except json.JSONDecodeError as e:
+        return f"Invalid JSON: {str(e)}"
 
 sys.path.insert(0, os.path.abspath('..'))
-
-from server.chatgpt import ChatGPTService
-from server.infer import InferService
 
 class Client(QMainWindow):
     def __init__(self):
@@ -34,7 +44,7 @@ class Client(QMainWindow):
         self.path_label = self.findChild(QLabel, "file_path_label")
 
         self.classify_button = self.findChild(QPushButton, "classify_button")
-        self.classify_button.clicked.connect(self._send_to_server)
+        self.classify_button.clicked.connect(self._classify)
 
         self.output_scrollarea = self.findChild(QScrollArea, "output_scrollArea")
         # FILL THE SCROLLAREA
@@ -73,16 +83,16 @@ class Client(QMainWindow):
         self.print_result("")
 
 
-    def _send_to_server(self):
-        symbols = "".join(["+" for _ in range(5)])
-        gpt_service = ChatGPTService()
-        reply_cgpt = gpt_service.classify(self.read_content)
-        self.print_result(f"{symbols} RESPONSE FROM CHATGPT {symbols}\n\n" + reply_cgpt)
+    def _classify(self):
+        response = requests.post("http://45.32.158.114/analyze", files={'file': self.read_content})
+        response_dict = response.json()
+        infer_response = InferResponse(payload=response_dict)
+        pmd_response = PMDResponse(payload=response_dict)
+        chatgpt_response = ChatGPTResponse(payload=response_dict)
+        self.print_result(f"{pmd_response.title}\n{pmd_response.content}\n\n{infer_response.title}\n{infer_response.content}\n\n{chatgpt_response.title}\n{chatgpt_response.content}")
 
 
-        infer_service = InferService()
-        reply_infer = infer_service.classify(self.read_content)
-        self.print_result(f"{symbols} RESPONSE FROM INFER {symbols}\n" + reply_infer.content.decode("utf-8").replace("\\n", '\n'), append=True)
+
 
 
     def print_result(self, result, append:bool=False):
